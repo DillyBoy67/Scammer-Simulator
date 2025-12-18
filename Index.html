@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Scammer Simulator</title>
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<!-- Link to CSS -->
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- Desktop area -->
+<div id="desktop">
+  <!-- Taskbar -->
+  <div id="taskbar">
+    <div class="app-icon" title="WhatsDat" onclick="openApp('whatsdat')"><i class="fas fa-comments"></i></div>
+    <div class="app-icon" title="Bank" onclick="openApp('bank')"><i class="fas fa-dollar-sign"></i></div>
+    <div class="app-icon" title="Black Market" onclick="openApp('blackmarket')"><i class="fas fa-store"></i></div>
+    <div class="app-icon" title="Police" onclick="openApp('police')"><i class="fas fa-shield-alt"></i></div>
+    <div class="app-icon" title="Phone" onclick="openApp('phone')"><i class="fas fa-phone"></i></div>
+  </div>
+
+  <!-- Windows / Apps -->
+  <!-- WhatsDat App -->
+  <div class="window" id="whatsdat">
+    <div class="window-header">
+      <span>WhatsDat</span>
+      <span class="close-btn" onclick="closeApp('whatsdat')">&times;</span>
+    </div>
+    <div class="window-content">
+      <h3>Contacts</h3>
+      <div id="contacts"></div>
+      <hr/>
+      <h3>Chat</h3>
+      <div id="messages"></div>
+      <div id="messageInputContainer">
+        <input type="text" id="messageInput" placeholder="Type a message..." />
+        <button id="sendMessageBtn">Send</button>
+        <button id="requestMoneyBtn">Request Money</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bank App -->
+  <div class="window" id="bank">
+    <div class="window-header">
+      <span>Bank</span>
+      <span class="close-btn" onclick="closeApp('bank')">&times;</span>
+    </div>
+    <div class="window-content">
+      <h3>Your Money: $<span id="playerMoney">1000</span></h3>
+      <button onclick="depositMoney()">Deposit Money</button>
+      <button onclick="withdrawMoney()">Withdraw Money</button>
+    </div>
+  </div>
+
+  <!-- Black Market App -->
+  <div class="window" id="blackmarket">
+    <div class="window-header">
+      <span>Black Market</span>
+      <span class="close-btn" onclick="closeApp('blackmarket')">&times;</span>
+    </div>
+    <div class="window-content" id="upgrades">
+      <h3>Upgrades Store</h3>
+      <button onclick="buyUpgrade('trustworthiness')">Increase Trustworthiness (+10%) - $200</button>
+      <button onclick="buyUpgrade('reliability')">Increase Reliability (+10%) - $200</button>
+      <button onclick="buyUpgrade('speed')">Increase Speed (+10%) - $200</button>
+      <div id="upgradeStatus"></div>
+    </div>
+  </div>
+
+  <!-- Police App -->
+  <div class="window" id="police">
+    <div class="window-header">
+      <span>Police</span>
+      <span class="close-btn" onclick="closeApp('police')">&times;</span>
+    </div>
+    <div class="window-content" id="policeActions">
+      <button onclick="swatTarget()">Swat Someone</button>
+      <div id="policeResult"></div>
+    </div>
+  </div>
+
+  <!-- Phone App -->
+  <div class="window" id="phone">
+    <div class="window-header">
+      <span>Phone</span>
+      <span class="close-btn" onclick="closeApp('phone')">&times;</span>
+    </div>
+    <div class="window-content">
+      <h3>Contacts</h3>
+      <div id="phoneContacts" style="max-height:150px; overflow-y:auto; border:1px solid #ccc; padding:5px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Money Request Modal -->
+<div id="moneyRequestModal">
+  <div id="moneyRequestContent">
+    <h3>Request Money</h3>
+    <input type="number" id="moneyAmount" placeholder="Amount" />
+    <button onclick="sendMoneyRequest()">Send Request</button>
+    <button onclick="closeMoneyModal()">Cancel</button>
+  </div>
+</div>
+
+<!-- Link to JS -->
+<script src="script.js"></script>
+</body>
+</html>
