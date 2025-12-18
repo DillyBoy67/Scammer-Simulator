@@ -12,7 +12,7 @@ body {
 /* Desktop */
 #desktop {
   flex: 1;
-  position: relative;
+  position: relative; /* Added this line to fix positioning */
   background: linear-gradient(to bottom, #0078D7, #005A9E);
   overflow: hidden;
 }
